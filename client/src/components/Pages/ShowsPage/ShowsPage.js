@@ -79,7 +79,7 @@ class ShowsPage extends React.Component {
                         className='pagination'
                         onChange={this.onChange}
                         current={this.state.page}
-                        total={33000}
+                        total={3300}
                     />
                 </div>
         )

@@ -17,9 +17,10 @@ export default function (state = {}, action) {
                 favs: action.favShows
             };
         case DELETE_FAV:
+            console.log(state);
             return {
                 ...state,
-                favs: state.fav.favs.filter((show) => show._id !== action._id)
+                favs: state.favs.filter((show) => show._id !== action._id)
             };
         default:
             return state;

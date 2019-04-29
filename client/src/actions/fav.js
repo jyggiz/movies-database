@@ -46,12 +46,12 @@ export const deleteFav = (_id) => ({
 
 export const handleDeleteFav= (_id) => dispatch => {
     axios
-        .get(`/api/favorites/${_id}`)
+        .get(`/api/fav/${_id}`)
         .then((data) => {
-            dispatch(deleteFav(_id))
+            dispatch(deleteFav(_id));
         })
         .catch((error) => {
-            console.log(error)
+            console.log(error);
         })
 };
 

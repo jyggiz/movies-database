@@ -6,3 +6,9 @@
     justify-content: center;
     align-items: center;
 }
+
+.shows-list-container__title{
+    font-size: 4em;
+    align-self: center;
+    margin-top: 20%;
+}

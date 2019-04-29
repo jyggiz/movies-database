@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { handleGetFavShows } from "../../../actions/fav";
+import {
+    handleGetFavShows,
+    handleDeleteFav
+} from "../../../actions/fav";
 
 import ShowsList from '../../ShowsList/ShowsList';
 import Loader from 'react-loader-spinner';
@@ -25,7 +28,15 @@ class FavoritesPage extends React.Component {
         this.props.handleGetFavShows();
     }
 
+    handleDeleteFav = (_id) => {
+        this.props.handleDeleteFav(_id);
+        //window.location.reload(); // sorry za hardcoding
+    };
+
     componentWillReceiveProps(nextProps) {
+        this.setState(() => ({
+            loading: true
+        }));
         console.log(nextProps);
         const { favs } = nextProps;
         const newFavs = favs.map(({ tvMazeId, poster, name, _id, avgRating, premiered }) => ({
@@ -54,7 +65,9 @@ class FavoritesPage extends React.Component {
                         height={300}
                         width={300}
                     />
-                    : <ShowsList shows={this.state.favs}/>
+                    : <ShowsList
+                        handle={this.handleDeleteFav}
+                        shows={this.state.favs}/>
                 }
             </div>
         )
@@ -70,7 +83,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-    handleGetFavShows
+    handleGetFavShows,
+    handleDeleteFav
 };
 
 export default connect(

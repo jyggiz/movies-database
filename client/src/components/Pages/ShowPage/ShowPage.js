@@ -4,13 +4,19 @@ import {
     handleGetShowById,
     clearShowItem,
 } from "../../../actions/show";
-import { handleAddFavShow } from "../../../actions/fav";
+import {
+    handleAddFavShow
+} from "../../../actions/fav";
+
 
 import Loader from 'react-loader-spinner';
+import Popup from 'react-popup';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 import './ShowPage.css';
 import ShowProfile from "../../ShowProfile/ShowProfile";
 import CastList from "../../CastList/CastList";
+import 'react-notifications/lib/notifications.css';
 
 class ShowPage extends React.Component {
 
@@ -37,6 +43,13 @@ class ShowPage extends React.Component {
         this.props.clearShowItem();
     };
 
+    createNotification = () => {
+        console.log(3);
+        return () => {
+            NotificationManager.success('Add new favorite show!', 'Success');
+        }
+    };
+
     handleAddFavorite = ( rating,
                           name,
                           tvMazeId,
@@ -49,8 +62,11 @@ class ShowPage extends React.Component {
             poster: imageSrc,
             premiered
         };
+
         console.log(show);
         this.props.handleAddFavShow(show);
+        this.createNotification();
+        alert('Success! Add new Item!');
     };
 
     render () {
@@ -73,7 +89,7 @@ class ShowPage extends React.Component {
             const finalRating = rating && rating.average ? rating.average : 0;
             const networkName = network && network.name ? network.name : 'None';
             const finalName = name ? name : 'None';
-            const finalGenres = genres ? genres : 'None';
+            const finalGenres = genres ? genres.map((item) => `${item} `) : 'None';
             const finalLanguage = language ? language : 'None';
             const finalStatus = status ? status : 'None';
             const finalType = type ? type : 'None';
@@ -109,6 +125,7 @@ class ShowPage extends React.Component {
                     </div>
 
                     <CastList cast={finalCast}/>
+                    <NotificationContainer/>
                 </div>
             )
         } else {
