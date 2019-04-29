@@ -1,0 +1,35 @@
+.show-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 20%;
+    width: 20%;
+    margin-top: 60px;
+}
+
+.show-card__info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.show-card__image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.show-card__rating {
+    margin-top: 5px;
+}
+
+.show-card__title {
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 10px;
+}
+
+.show-card__date {
+    margin-top: 5px;
+}

@@ -1,0 +1,31 @@
+.search-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search {
+    margin-top: 50px;
+}
+
+.search__input {
+    padding: 0 15px;
+    width: 600px;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid var(--primaryText);
+    background-color: var(--primaryBg);
+    color: var(--primaryText);
+}
+
+.search__button {
+    padding: 0 30px;
+    height: 50px;
+    background: var(--primaryTheme);
+    font-weight: 500;
+    color: var(--primaryButtonText);
+    border-radius: 10px;
+    margin-left: 10px;
+    font-size: 1.3em;
+}

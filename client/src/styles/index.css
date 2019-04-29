@@ -1,0 +1,7 @@
+@import url('fonts/index.css');
+@import url('themes/theme.css');
+@import url('reset/reset.css');
+
+.pagination {
+    color: var(--primaryText);
+}

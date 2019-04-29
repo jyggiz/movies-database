@@ -1,0 +1,31 @@
+.cast-list__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    height: 300px;
+    margin-left: 5px;
+    margin-bottom: 120px;
+}
+
+.cast-list__image {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.cast-list__character{
+    margin-top: 10px;
+    font-size: 1.4em;
+    font-style: italic;
+}
+
+.cast-list__text {
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+.cast-list__person{
+    margin-top: 10px;
+    font-style: italic;
+}

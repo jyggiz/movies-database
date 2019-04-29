@@ -1,0 +1,10 @@
+@import url('styles/index.css');
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--primaryBg);
+  color: var(--primaryText);
+  font-family: "Roboto", sans-serif;
+}
+

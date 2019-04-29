@@ -1,0 +1,26 @@
+.show-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0 40px 0;
+}
+
+.summary {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2em;
+    justify-content: center;
+    padding: 60px 200px;
+    border-bottom: 1px solid var(--primaryText)
+}
+
+.summary__title {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+.summary__text {
+    line-height: 1.8;
+}
