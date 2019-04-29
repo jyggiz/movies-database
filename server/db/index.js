@@ -1,4 +1,4 @@
-const favorites = require('./favorites');
+const favorites = require('./fav');
 
 const data = {
     favorites

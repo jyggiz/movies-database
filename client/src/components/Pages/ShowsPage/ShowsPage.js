@@ -30,8 +30,17 @@ class ShowsPage extends React.Component {
 
    componentWillReceiveProps(nextProps) {
         const { shows } = nextProps;
+        const newShows = shows.map(({ rating, image, premiered, id, name}) => ({
+            rating: rating && rating.average ? rating.average : 'Rating none',
+            image: image && image.original
+           ? image.original
+           : 'http://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie-1-3.jpg',
+            premiered: premiered ? premiered.slice(0, 4) : 'Date is unknown',
+            id,
+            name
+        }));
         this.setState(() => ({
-            shows,
+            shows: newShows,
             loading: false
         }));
 

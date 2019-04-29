@@ -2,14 +2,10 @@ const mongoose = require("mongoose");
 
 const favoritesSchema = mongoose.Schema({
     name: String,
-    tvmazeId: Number,
+    tvMazeId: Number,
     poster: String,
     avgRating: Number,
-    /*user: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'User'
-    }*/
-    //user:
+    premiered: String
 });
 
 module.exports = mongoose.model('Favorites', favoritesSchema);

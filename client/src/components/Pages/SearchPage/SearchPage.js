@@ -23,8 +23,19 @@ class SearchPage extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         const { searchShows } = nextProps;
+        console.log(searchShows);
+        const newShows = searchShows.map(({ rating, image, premiered, id, name}) => ({
+            rating: rating && rating.average ? rating.average : 'Rating none',
+            image: image && image.original
+                ? image.original
+                : 'http://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie-1-3.jpg',
+            premiered: premiered ? premiered.slice(0, 4) : 'Date is unknown',
+            id,
+            name
+        }));
+        console.log(newShows);
         this.setState(() => ({
-            searchShows,
+            searchShows: newShows,
             loading: false
         }));
 
@@ -58,7 +69,7 @@ class SearchPage extends React.Component {
                     />
                 </form>
                 {!this.state.loading
-                    ? <ShowsList shows={this.props.searchShows} />
+                    ? <ShowsList shows={this.state.searchShows} />
                     : <Loader
                         className='loader'
                         type="Triangle"

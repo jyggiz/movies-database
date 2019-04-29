@@ -33,3 +33,14 @@
 .show-card__date {
     margin-top: 5px;
 }
+
+.show-card__button {
+    padding: 0 15px;
+    height: 32px;
+    background: var(--primaryTheme);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--primaryButtonText);
+    border-radius: 20px;
+    margin-top: 10px;
+}

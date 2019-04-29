@@ -1,52 +1,31 @@
-const Favorites = require('../models/Favorites')
-const ObjectID = require("mongodb").ObjectID
+const Favorites = require('../models/fav');
 
 const methods = {
-    addMovieToFavorites: async ({
-                                    rating, genres, name, summary, id, image
-                                }, user) => {
-        try {
-            const exist = await Favorites.findOne({tvmazeId: id}).exec()
+    addShowToFavs: async ({rating, name, tvMazeId, poster, premiered}) => {
+        const result = await Favorites.findOne({tvMazeId}).exec();
 
-            if(exist) {
-                return 201
-            }
-            const avgRating = rating && rating.average ? rating.average : -100
-            const poster = image && image.original ? image.original : ''
-
-            const item = new Favorites({
-                avgRating,
-                genres,
-                name,
-                summary,
-                tvmazeId: id,
-                poster,
-                user: user._id
-            })
-
-            await item.save()
-            return 200
-        } catch(err) {
-            throw err
-            return 500
+        if(result) {
+            return 201
         }
+
+        const item = new Favorites({
+            avgRating: rating,
+            name,
+            tvMazeId,
+            poster,
+            premiered
+        });
+
+        await item.save();
+        return 200
     },
-    getUserFavoriteMovies: async (user) => {
-        try {
-            const result = await Favorites.find({user: user._id}).exec()
-            return result
-        } catch(err) {
-            throw err
-        }
+    getFavsShows: async () => {
+        return await Favorites.find().exec();
     },
-    removeFromFavorites: async ({id}) => {
-        try {
-            await Favorites.remove({_id: id}).exec()
-            return
-        } catch(err) {
-            throw err
-        }
+    deleteFavShow: async ({id}) => {
+        await Favorites.remove({_id: id}).exec();
+        return 200;
     }
-}
+};
 
 module.exports = methods;

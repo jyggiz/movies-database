@@ -16,6 +16,7 @@ const CastList = ({ cast }) => {
                         : 'https://pngimage.net/wp-content/uploads/2018/05/default-user-profile-image-png-6.png';
                     return (
                         <CastItem
+                            key={index}
                             character={character}
                             person={person}
                             index={index}

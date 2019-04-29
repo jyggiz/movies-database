@@ -16,7 +16,7 @@ export const clearShowItem = () => ({
 });
 
 export const handleGetShowById = (id) => (dispatch) => {
-    axios.get(`http://localhost:4000/api/tv/show/${id}`)
+    axios.get(`/api/tv/show/${id}`)
         .then(({ data }) => {
             console.log(data);
             dispatch(getShow(data))
@@ -32,7 +32,7 @@ export const getSearchShows = (searchShows) => ({
 });
 
 export const handleSearchShows = (query) => (dispatch) => {
-    axios.get(`http://localhost:4000/api/tv/shows/${query}`)
+    axios.get(`/api/tv/shows/${query}`)
         .then(({ data }) => {
             dispatch(getSearchShows(data.map((item) => item.show)));
             console.log(data.map((item) => item.show));
@@ -54,7 +54,7 @@ export const getShowsList = (shows) => ({
 export const handleGetShowsList = (page) => (dispatch) => {
     const apiShowPage = (page - 1) / 12;
     console.log(apiShowPage);
-    axios.get(`http://localhost:4000/api/tv/shows/pages/${apiShowPage}`)
+    axios.get(`/api/tv/shows/pages/${apiShowPage}`)
         .then(({ data }) => {
             console.log(data);
             localStorage.setItem('shows', JSON.stringify(data.slice(0, 240)));
