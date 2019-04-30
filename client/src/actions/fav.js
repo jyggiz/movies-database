@@ -31,7 +31,6 @@ export const getFavShows = (favShows) => ({
 export const handleGetFavShows = () => (dispatch) => {
     axios.get(`/api/fav/`)
         .then(({ data }) => {
-            console.log(getFavShows());
             dispatch(getFavShows(data));
         })
         .catch((error) => {

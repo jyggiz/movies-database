@@ -52,11 +52,9 @@ export const getShowsList = (shows) => ({
 });
 
 export const handleGetShowsList = (page) => (dispatch) => {
-    const apiShowPage = (page - 1) / 12;
-    console.log(apiShowPage);
+    const apiShowPage = Math.floor((page - 1) / 12);
     axios.get(`/api/tv/shows/pages/${apiShowPage}`)
         .then(({ data }) => {
-            console.log(data);
             localStorage.setItem('shows', JSON.stringify(data.slice(0, 240)));
             localStorage.setItem('apiPage', JSON.stringify({
                 firstPage: Math.floor((page - 1 ) / 12) * 12 + 1,
